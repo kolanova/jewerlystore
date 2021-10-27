@@ -4,7 +4,6 @@ import com.example.jewerlystore.model.Client;
 
 import com.example.jewerlystore.repository.ClientRepository;
 import com.example.jewerlystore.request.ClientCreationRequest;
-import com.example.jewerlystore.request.JewelCreationRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ public class ClientService {
     //finding all our clients
     public List<Client> findAll(){return clientRepository.findAll();}
     //get clients by id
-    public Client getClientsById(Long id){return clientRepository.findById(id);}
+    public Client getClientById(Long id){return clientRepository.findById(id);}
     //create new client
 
     public List<Client> createClient(List<ClientCreationRequest> clientCreationRequestList){
@@ -34,14 +33,14 @@ public class ClientService {
     }
     //update client by name
     public Client updateClient(Long id, String name) {
-        Client clientToUpdate=this.getClientsById(id);
+        Client clientToUpdate=this.getClientById(id);
         clientToUpdate.setName(name);
         clientRepository.save(clientToUpdate);
         return clientToUpdate;
     }
     //delete by id
-    public void deleteById(Long id) {
-        this.getClientsById(id);
-        clientRepository.deleteById(String.valueOf(id));
+    public void deleteClientById(Long id) {
+        this.getClientById(id);
+        clientRepository.deleteClientById(String.valueOf(id));
     }
 }

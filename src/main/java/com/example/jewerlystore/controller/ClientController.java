@@ -17,22 +17,22 @@ import java.util.List;
 public class ClientController {
     @Autowired
     ClientService clientService;
-    @GetMapping
-    public List<Client> getClient(){
+    @GetMapping("/clients")
+    public List<Client> getClientById(){
         return clientService.findAll();
     }
-    @GetMapping
+    @GetMapping("/clients{id}")
     public Client getClientById(@PathVariable Long id){
-        return clientService.getClientsById(id);
+        return clientService.getClientById(id);
     }
-    @PostMapping
+    @PostMapping(value = "/clients")
     public List<Client> createClient(@RequestBody @Valid List<ClientCreationRequest>clientCreationRequest){
         return clientService.createClient(clientCreationRequest);
     }
-    @PutMapping
+    @PutMapping(value = "/client-update{id}")
     public Client updateClientName(@PathVariable(value = "id")Long id, @RequestBody UpdateClientNameRequest updateClientNameRequest){
         return clientService.updateClient(id, updateClientNameRequest.getName());
     }
-    @DeleteMapping
-    public void deleteById(@PathVariable(value = "id")Long id){clientService.deleteById(id);}
+    @DeleteMapping(value = "/client-delete{id}")
+    public void deleteById(@PathVariable(value = "id")Long id){clientService.deleteClientById(id);}
 }

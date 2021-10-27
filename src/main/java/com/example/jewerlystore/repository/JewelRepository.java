@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface JewelRepository extends JpaRepository<Jewel, String> {
     Jewel findJewelById(Long id);
-    void deleteById(Long id);
+    void deleteJewelById(Long id);
 }

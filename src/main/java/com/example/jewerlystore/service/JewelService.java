@@ -45,8 +45,8 @@ public class JewelService {
         return jewelToUpdate;
     }
     //delete by name
-    public void deleteById(Long id){
+    public void deleteJewelById(Long id){
         this.getJewelById(id);
-        jewelRepository.deleteById(id);
+        jewelRepository.deleteJewelById(id);
     }
 }
